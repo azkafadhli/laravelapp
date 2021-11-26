@@ -43,7 +43,7 @@ class AccountController extends Controller
      */
     public function show(string $uid)
     {
-        return Account::find($uid);
+        return Account::find($uid)->load(['todos']);
     }
 
     /**
