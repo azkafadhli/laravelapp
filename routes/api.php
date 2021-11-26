@@ -21,6 +21,8 @@ Route::get('/status', function () {
 Route::prefix('v1')->group(function () {
     Route::apiResource('accounts', 'AccountController');
     Route::apiResource('todos', 'TodoController');
+    Route::apiResource('tags', 'TagController');
+    Route::apiResource('tag-todo', 'TagTodoController');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
