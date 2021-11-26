@@ -39,7 +39,7 @@ class TodoController extends Controller {
      */
     public function show(int $id) {
         $todo = Todo::select(['id', 'uid', 'content', 'created_at', 'updated_at'])->where('id', $id)->get();
-        $todo->load('account');
+        $todo->load(['account','tag']);
         return $todo;
     }
 
