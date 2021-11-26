@@ -38,8 +38,8 @@ class TodoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(int $id) {
-        $todo = Todo::select(['id', 'uid', 'content', 'created_at', 'updated_at'])->where('id', $id)->get();
-        $todo->load(['account','tag']);
+        $todo = Todo::with(['account:uid,name', 'tag:id,name'])
+            ->where('id', $id)->get();
         return $todo;
     }
 
