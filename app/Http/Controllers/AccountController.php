@@ -43,7 +43,8 @@ class AccountController extends Controller
      */
     public function show(string $uid)
     {
-        return Account::find($uid)->load(['todos', 'tags']);
+        return Account::with(['todos', 'tags'])
+            ->where('uid', $uid)->get();
     }
 
     /**
